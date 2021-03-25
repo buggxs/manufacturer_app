@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
+<head th:replace="frontend/fragments/head :: head(~{::title}, ~{})">
+    <title>Manufacturer - Deine Verbindung mit Onlinehändlern im World Wide Web</title>
+
+</head>
+<body>
+<!-- Menü -->
+<header th:replace="frontend/fragments/header :: menu(~{::section})">
+    <!--Intro Section-->
+    <section class="view intro-2">
+        <div class="mask rgba-gradient"></div>
+        <div class="container h-100 d-flex justify-content-center align-items-center">
+            <div class="row flex-center pt-5 mt-3">
+                <div class="col-md-6 text-center text-md-left margins">
+                    <div class="white-text">
+                        <h1 class="h1-responsive font-weight-bold wow fadeInLeft" data-wow-delay="0.3s">Make purchases with our
+                            app </h1>
+                        <hr class="hr-light wow fadeInLeft" data-wow-delay="0.3s">
+                        <h6 class="wow fadeInLeft" data-wow-delay="0.3s">Lorem ipsum dolor sit amet, consectetur adipisicing
+                            elit. Rem repellendus quasi fuga nesciunt dolorum nulla magnam veniam sapiente, fugiat! Commodi sequi
+                            non animi ea dolor molestiae iste.</h6>
+                        <br>
+                        <a class="btn btn-outline-white wow fadeInLeft" data-wow-delay="0.3s">Learn more</a>
+                        <a class="btn btn-outline-white wow fadeInLeft" data-wow-delay="0.3s">Download
+                            <i class="fab fa-android left right" aria-hidden="true"></i>
+                            <i class="fab fa-apple left" aria-hidden="true"></i>
+                            <i class="fab fa-windows" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 wow fadeInRight d-flex justify-content-center" data-wow-delay="0.3s">
+                    <img src="https://mdbootstrap.com/img/Mockups/Transparent/Small/iphone-admin.png" alt="" class="img-responsive">
+                </div>
+            </div>
+        </div>
+    </section>
+</header>
+
+
+
+
+<!-- Seiteninhalt -->
+<main class="mt-5 mb-5">
+    <div class="container">
+        <h2>Advanced Double Navigation with slim Side-nav nad fixed Navbar:</h2>
+        <br>
+        <h5>1. Fixed slim Side-nav, hidden on small devices.</h5>
+        <h5>2. Fixed Navbar. It will always stay visible on the top, even when you scroll down.</h5>
+
+    </div>
+
+
+
+</main>
+
+
+<div th:replace="frontend/index/modals :: loginFormModal"></div>
+
+<!-- Footer und Scripte etc.. -->
+<footer th:replace="frontend/fragments/footer :: footer(~{})"></footer>
+</body>
+</html>

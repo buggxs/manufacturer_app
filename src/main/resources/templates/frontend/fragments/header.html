@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"  lang="de">
+    <header th:fragment="menu(section)">
+            <!--Navbar-->
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+
+                <div class="container">
+                    <!-- Navbar brand -->
+                    <a class="navbar-brand" href="#"><strong>Manufacturer</strong></a>
+
+                    <!-- Collapse button -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7"
+                            aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!-- Collapsible content -->
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+
+                        <!-- Links -->
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#"><i class="fas fa-home"></i> Home
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#"><i class="fas fa-bullhorn"></i> Leistungen</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" ><i class="fas fa-dollar-sign"></i> Preise</a>
+                            </li>
+
+                        </ul>
+                        <!-- Links -->
+
+                        <!-- Links -->
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-toggle="modal" data-target="#loginFormModal"><i class="fas fa-sign-in-alt"></i>  Anmelden
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Collapsible content -->
+                </div>
+
+            </nav>
+            <!--/.Navbar-->
+
+        <section th:replace="${section}"></section>
+
+    </header>
+</html>

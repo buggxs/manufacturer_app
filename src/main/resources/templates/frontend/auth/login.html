@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
+<head th:replace="frontend/fragments/head :: head(~{::title}, ~{})">
+    <title>Anmelden - Manufacturer</title>
+
+</head>
+<body class="fixed-sn mdb-skin">
+<!-- Menü -->
+<header th:replace="frontend/fragments/header :: menu(~{})"></header>
+
+<!-- Seiteninhalt -->
+<main>
+    <div class="container-fluid mt-5">
+        <form th:action="@{/login}" method="post">
+            <input name="email" id="email" type="email" placeholder="email">
+            <input name="password" id="password" type="password" placeholder="password">
+            <input type="submit"  class="btn" value="Login">
+        </form>
+    </div>
+</main>
+
+<!-- Footer und Scripte etc.. -->
+<footer th:replace="frontend/fragments/footer :: footer(~{})"></footer>
+</body>
+</html>

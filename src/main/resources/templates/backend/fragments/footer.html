@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="de">
+<footer xmlns:th="http://www.thymeleaf.org" th:fragment="head(scripts)">
+
+    <script type="text/javascript" th:src="@{/js/mdb/jquery-3.4.0.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/mdb/popper.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/mdb/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/mdb/mdb.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/manuf/main.js}"></script>
+
+    <script type="text/javascript">
+        new WOW().init();
+
+        $(document).ready(function() {
+            // SideNav Initialization
+
+            $(".button-collapse").sideNav();
+
+            $('.mdb-select').materialSelect();
+            $('.select-wrapper.md-form.md-outline input.select-dropdown').bind('focus blur', function () {
+                $(this).closest('.select-outline').find('label').toggleClass('active');
+                $(this).closest('.select-outline').find('.caret').toggleClass('active');
+            });
+        });
+    </script>
+
+    <th:block th:replace="${scripts}" />
+</footer>
+</html>

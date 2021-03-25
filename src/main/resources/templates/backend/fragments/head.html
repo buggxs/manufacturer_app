@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head xmlns:th="http://www.thymeleaf.org" th:fragment="head(title, links)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <title th:replace="${title}">Manufcaturers</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mdb/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/mdb/mdb.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/manuf/backend.css}">
+
+    <th:block th:replace="${links}" />
+</head>
+</html>

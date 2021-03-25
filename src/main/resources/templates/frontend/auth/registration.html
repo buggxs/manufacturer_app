@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
+<head th:replace="frontend/fragments/head :: head(~{::title}, ~{})">
+    <title>Registration - Manufacturer</title>
+
+</head>
+<body class="fixed-sn mdb-skin">
+<!-- Menü -->
+<header th:replace="frontend/fragments/header :: menu"></header>
+
+<!-- Seiteninhalt -->
+<main>
+    <div class="container mt-5">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-10 mt-5">
+                <!-- Default form login -->
+                <form class="border border-light p-5" th:action="@{/registration}" method="post" th:object="${user}">
+
+                    <h4 class="h4 h4-responsive mb-3">Konto erstellen</h4>
+
+
+                    <div class="row">
+                        <div class="col-md-12 col-lg-6">
+                            <div class="md-form md-outline">
+                                <input type="text" name="name" id="name" class="form-control">
+                                <label for="name">Firma</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-lg-6">
+                            <div class="md-form md-outline">
+                                <input type="text" name="ustid" id="ustid" class="form-control">
+                                <label for="ustid">USt-Id</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12">
+                            <div class="md-form md-outline">
+                                <input type="text" name="website" id="website" class="form-control">
+                                <label for="website">Webseite</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12 select-outline">
+                            <select class="mdb-select md-form md-outline colorful-select dropdown-primary" name="branch" id="branch">
+                                <option value="" disabled selected>Wähle eine Branche</option>
+                                <option value="1">Chemieindustrie</option>
+                                <option value="2">Ausbaugewerbe</option>
+                                <option value="3">Bauhauptgewerbe</option>
+                                <option value="4">Handwerk</option>
+                            </select>
+                            <label for="branch">Branche</label>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12 col-lg-6">
+                            <div class="md-form md-outline">
+                                <input type="text" name="postcode" id="postcode" class="form-control">
+                                <label for="postcode">PLZ</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-6">
+                            <div class="md-form md-outline">
+                                <input type="text" name="city" id="city" class="form-control">
+                                <label for="street">Ort</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12">
+                            <div class="md-form md-outline">
+                                <input type="text" name="street" id="street" class="form-control">
+                                <label for="street">Straße und Hausnummer</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12 col-lg-6 select-outline">
+                            <select class="mdb-select md-form md-outline colorful-select dropdown-primary" name="country" id="country">
+                                <option value="1">Deutschland</option>
+                                <option value="2">Österreich</option>
+                                <option value="3">Schweiz</option>
+                            </select>
+                            <label for="country">Land</label>
+                        </div>
+                        <div class="col-md-12 col-lg-6">
+                            <select class="mdb-select md-form md-outline colorful-select dropdown-primary" name="state" id="state">
+                                <option value="1">Hessen</option>
+                                <option value="2">Bayern</option>
+                                <option value="3">Baden-Württemberg</option>
+                                <option value="4">Berlin</option>
+                                <option value="5">Brandenburg</option>
+                            </select>
+                            <label for="state">Bundesland</label>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12 col-lg-6">
+                            <div class="md-form md-outline">
+                                <input type="tel" name="phone" id="phone" class="form-control">
+                                <label for="phone">Telefonnummer</label>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12 col-lg-6">
+                            <div class="md-form md-outline">
+                                <input type="email" name="contact_email" id="contact_email" class="form-control">
+                                <label for="contact_email">Kontakt E-Mail</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <h5 class="h5 h5-responsive mt-5 mb-3">Account Daten</h5>
+
+                    <div class="row">
+                        <div class="col-md-12 col-lg-2 select-outline">
+                            <select class="mdb-select md-form md-outline colorful-select dropdown-primary" name="salutation" id="salutation">
+                                <option value="1">Herr</option>
+                                <option value="2">Frau</option>
+                                <option value="3">Divers</option>
+                            </select>
+                            <label for="salutation">Salutation</label>
+                        </div>
+
+                        <div class="col-md-12 col-lg-5">
+                            <div class="md-form md-outline">
+                                <input type="text" name="firstname" id="firstname" class="form-control">
+                                <label for="firstname">Vorname</label>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-lg-5">
+                            <div class="md-form md-outline">
+                                <input type="text" name="lastname" id="lastname" class="form-control">
+                                <label for="lastname">Name</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12">
+                            <div class="md-form md-outline">
+                                <input type="email" name="email" id="email" class="form-control">
+                                <label for="email">E-Mail Adresse</label>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12">
+                            <div class="md-form md-outline">
+                                <input type="password" name="password" id="password" class="form-control">
+                                <label for="password">Passwort</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12 col-lg-12">
+                            <div class="md-form md-outline">
+                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+                                <label for="password_confirmation">Passwort wiederholen</label>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Sign in button -->
+                    <button class="btn btn-lg btn-unique btn-block my-4" type="submit">Konto erstellen</button>
+
+                </form>
+                <!-- Default form login -->
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer und Scripte etc.. -->
+<footer th:replace="frontend/fragments/footer :: footer(~{})"></footer>
+</body>
+</html>

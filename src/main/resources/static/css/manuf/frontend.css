@@ -1,0 +1,57 @@
+html,
+body,
+header,
+.view {
+    height: 700px;
+}
+
+@media (max-width: 740px) {
+    html,
+    body,
+    header,
+    .view {
+        height: 1000px;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 1030px) {
+    html,
+    body,
+    header,
+    .view  {
+        height: 650px;
+    }
+}
+
+.intro-2 {
+    background: url("https://mdbootstrap.com/img/Photos/Others/architecture.jpg")no-repeat center center;
+    background-size: cover;
+}
+
+.top-nav-collapse {
+    background-color: #929fba !important;
+}
+.navbar:not(.top-nav-collapse) {
+    background: transparent !important;
+}
+@media (max-width: 991px) {
+    .navbar:not(.top-nav-collapse) {
+        background: #929fba !important;
+    }
+}
+/*h6 {
+    line-height: 1.7;
+}*/
+.rgba-gradient {
+    background: -moz-linear-gradient(45deg, rgba(42, 27, 161, 0.6), rgba(50, 189, 229, 0.6) 100%);
+    background: -webkit-linear-gradient(45deg, rgba(42, 27, 161, 0.6), rgba(50, 189, 229, 0.6) 100%);
+    background: -webkit-gradient(linear, 45deg, from(rgba(42, 27, 161, 0.6)), to(rgba(50, 189, 229, 0.6)));
+    background: -o-linear-gradient(45deg, rgba(42, 27, 161, 0.6), rgba(50, 189, 229, 0.6) 100%);
+    background: linear-gradient(to 45deg, rgba(42, 27, 161, 0.6), rgba(50, 189, 229, 0.6) 100%);
+}
+@media (max-width: 450px) {
+    .margins {
+        margin-right: 1rem;
+        margin-left: 1rem;
+    }
+}

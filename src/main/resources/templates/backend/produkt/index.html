@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
+<head th:replace="backend/fragments/head :: head(~{::title}, ~{::link})">
+    <title>Manufacturer - Deine Verbindung mit Onlinehändlern im World Wide Web</title>
+
+    <!-- MDBootstrap Cards Extended Pro  -->
+    <link th:href="@{/css/mdb/addons-pro/cards-extended.min.css}" rel="stylesheet">
+
+</head>
+<body class="fixed-sn mdb-skin">
+<!-- Menü -->
+<header th:replace="backend/fragments/header :: menu"></header>
+
+<!-- Seiteninhalt -->
+<main>
+    <div class="container-fluid mt-5">
+
+        <div class="row mb-3">
+            <div class="col-12">
+                <h1 class="h1 h1-responsive">Herzlich Willkommen</h1>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+    </div>
+</main>
+
+<!-- Footer und Scripte etc.. -->
+<footer th:replace="backend/fragments/footer :: footer(~{})"></footer>
+</body>
+</html>

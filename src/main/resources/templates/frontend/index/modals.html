@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+
+
+<div th:fragment="loginFormModal" class="modal fade" id="loginFormModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Anmelden</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <form class="border border-light" th:action="@{/login}" method="post">
+                <div class="modal-body ">
+
+                    <!-- Material outline input with prefix-->
+                    <div class="md-form md-outline">
+                        <i class="fas fa-envelope prefix"></i>
+                        <input type="email" id="email" name="email" class="form-control">
+                        <label for="email">Email</label>
+                    </div>
+
+                    <div class="md-form md-outline">
+                        <i class="fas fa-lock prefix"></i>
+                        <input type="password" id="password" name="password" class="form-control">
+                        <label for="password">Passwort</label>
+                    </div>
+
+                    <div class="d-flex justify-content-around">
+                        <div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="rememberme" name="rememberme">
+                                <label class="custom-control-label" for="rememberme">Angemeldet bleiben</label>
+                            </div>
+                        </div>
+                        <div>
+                            <a href="">Passwort vergessen?</a>
+                        </div>
+                    </div>
+                    <button class="btn btn-info btn-block my-4" type="submit">Anmelden</button>
+                    <p>Noch kein Konto?
+                        <a href="">Registrieren</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="text-center">
+    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalSubscriptionForm">Launch
+        Modal Subscription Form</a>
+</div>
+
+
+
+
+
+
+
+
+</html>
