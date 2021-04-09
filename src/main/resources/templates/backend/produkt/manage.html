@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="de">
+<head th:replace="backend/fragments/head :: head(~{::title}, ~{::link})">
+    <title>Manufacturer - Deine Verbindung mit Onlinehändlern im World Wide Web</title>
+
+    <!-- MDBootstrap Cards Extended Pro  -->
+    <link href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" >
+
+</head>
+<body class="fixed-sn mdb-skin">
+<!-- Menü -->
+<header th:replace="backend/fragments/header :: menu"></header>
+
+<!-- Seiteninhalt -->
+<main style="margin: 0;">
+    <div class="container-fluid mt-5">
+
+        <div class="row mb-3">
+            <div class="col-12 d-flex d-inline-flex">
+                <h1 class="h1 h1-responsive">
+                    <span class="align-middle">Verwalte deine Produkte</span>
+                    <a href="" class="btn btn-floating btn-primary" data-toggle="tooltip" title="Neues Produkt erstellen" ><i class="fas fa-plus"></i></a>
+                </h1>
+            </div>
+        </div>
+
+
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="h3">Alle Produkte</h3>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-12">
+                        <table id="productTable">
+                            <thead>
+                            <tr>
+                                <th>Row 1</th>
+                                <th>Row 2</th>
+                                <th>Row 3</th>
+                                <th>Row 4</th>
+                                <th style="width: 80px;">Aktion</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Data 1</td>
+                                <td>Data 2</td>
+                                <td>Data 3</td>
+                                <td>Data 4</td>
+                                <td>
+                                    <a href="" class="badge badge-primary" data-toggle="tooltip" title="Produkt bearbeiten"><i class="fas fa-pencil-alt" style="font-size: 1.0rem;"></i></a>
+                                    <a href="#" class="badge badge-danger ml-2" data-toggle="tooltip" title="Produkt löschen"><i class="fas fa-times" style="font-size: 1.0rem;"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Data 1</td>
+                                <td>Data 2</td>
+                                <td>Data 3</td>
+                                <td>Data 4</td>
+                                <td>
+                                    <a href="" class="badge badge-primary" data-toggle="tooltip" title="Produkt bearbeiten"><i class="fas fa-pencil-alt" style="font-size: 1.0rem;"></i></a>
+                                    <a href="#" class="badge badge-danger ml-2" data-toggle="tooltip" title="Produkt löschen"><i class="fas fa-times" style="font-size: 1.0rem;"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Data 1</td>
+                                <td>Data 2</td>
+                                <td>Data 3</td>
+                                <td>Data 4</td>
+                                <td>
+                                    <a href="" class="badge badge-primary" data-toggle="tooltip" title="Produkt bearbeiten"><i class="fas fa-pencil-alt" style="font-size: 1.0rem;"></i></a>
+                                    <a href="#" class="badge badge-danger ml-2" data-toggle="tooltip" title="Produkt löschen"><i class="fas fa-times" style="font-size: 1.0rem;"></i></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="h3 h3-responsive">
+                            Produktgrupppen zum Freigeben
+                        </h3>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-12">
+                        <table id="productGroupTable">
+                            <thead>
+                            <tr>
+                                <th>Row 1</th>
+                                <th>Row 2</th>
+                                <th>Row 3</th>
+                                <th>Row 4</th>
+                                <th style="width: 80px;">Aktion</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>Data 1</td>
+                                <td>Data 2</td>
+                                <td>Data 3</td>
+                                <td>Data 4</td>
+                                <td>
+                                    <a href="" class="badge badge-primary" data-toggle="tooltip" title="Produkt bearbeiten"><i class="fas fa-pencil-alt" style="font-size: 1.0rem;"></i></a>
+                                    <a href="#" class="badge badge-danger ml-2" data-toggle="tooltip" title="Produkt löschen"><i class="fas fa-times" style="font-size: 1.0rem;"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Data 1</td>
+                                <td>Data 2</td>
+                                <td>Data 3</td>
+                                <td>Data 4</td>
+                                <td>
+                                    <a href="" class="badge badge-primary" data-toggle="tooltip" title="Produkt bearbeiten"><i class="fas fa-pencil-alt" style="font-size: 1.0rem;"></i></a>
+                                    <a href="#" class="badge badge-danger ml-2" data-toggle="tooltip" title="Produkt löschen"><i class="fas fa-times" style="font-size: 1.0rem;"></i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Data 1</td>
+                                <td>Data 2</td>
+                                <td>Data 3</td>
+                                <td>Data 4</td>
+                                <td>
+                                    <a href="" class="badge badge-primary" data-toggle="tooltip" title="Produkt bearbeiten"><i class="fas fa-pencil-alt" style="font-size: 1.0rem;"></i></a>
+                                    <a href="#" class="badge badge-danger ml-2" data-toggle="tooltip" title="Produkt löschen"><i class="fas fa-times" style="font-size: 1.0rem;"></i></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+</main>
+
+<!-- Footer und Scripte etc.. -->
+<footer th:replace="backend/fragments/footer :: footer(~{::script})">
+
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js" ></script>
+
+    <script type="text/javascript">
+
+        $(document).ready( function () {
+            $('#productTable').DataTable();
+
+            $('#productGroupTable').DataTable();
+
+            // Tooltips Initialization
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+        });
+
+    </script>
+
+</footer>
+</body>
+</html>

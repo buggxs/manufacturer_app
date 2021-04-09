@@ -13,9 +13,8 @@
                 </button>
             </div>
 
-            <form class="border border-light" th:action="@{/login}" method="post">
+            <form class="border border-light" th:action="@{/login}" method="post" id="loginModalForm">
                 <div class="modal-body ">
-
                     <!-- Material outline input with prefix-->
                     <div class="md-form md-outline">
                         <i class="fas fa-envelope prefix"></i>
@@ -40,7 +39,7 @@
                             <a href="">Passwort vergessen?</a>
                         </div>
                     </div>
-                    <button class="btn btn-info btn-block my-4" type="submit">Anmelden</button>
+                    <button class="btn btn-info btn-block my-4" type="submit" >Anmelden</button>
                     <p>Noch kein Konto?
                         <a href="">Registrieren</a>
                     </p>

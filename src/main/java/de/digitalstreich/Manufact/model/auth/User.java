@@ -2,6 +2,7 @@ package de.digitalstreich.Manufact.model.auth;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.digitalstreich.Manufact.model.Manufacturer;
+import de.digitalstreich.Manufact.model.Retailer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -54,12 +55,17 @@ public class User implements UserDetails {
     @PrimaryKeyJoinColumn
     private Manufacturer manufacturer;
 
+    @Nullable
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private Retailer retailer;
+
     @CreationTimestamp
-    @Column(name = "created_at")
+    @Column(name = "created_at", columnDefinition = "DATETIME default CURRENT_TIMESTAMP")
     private Date createdAt;
 
     @UpdateTimestamp
-    @Column(name = "updated_at")
+    @Column(name = "updated_at", columnDefinition = "DATETIME default CURRENT_TIMESTAMP")
     private Date updatedAt;
 
     @Override
@@ -70,6 +76,19 @@ public class User implements UserDetails {
     @Override
     public String getUsername() {
         return this.email;
+    }
+
+    public User(String email, String password, String passwordConfirm, boolean isAccountNonExpired, boolean isAccountNonLocked, boolean isCredentialsNonExpired, boolean isEnabled, Role role, @Nullable Manufacturer manufacturer, @Nullable Retailer retailer) {
+        this.email = email;
+        this.password = password;
+        this.passwordConfirm = passwordConfirm;
+        this.isAccountNonExpired = isAccountNonExpired;
+        this.isAccountNonLocked = isAccountNonLocked;
+        this.isCredentialsNonExpired = isCredentialsNonExpired;
+        this.isEnabled = isEnabled;
+        this.role = role;
+        this.manufacturer = manufacturer;
+        this.retailer = retailer;
     }
 
     public User(String email, String password, boolean isAccountNonExpired, boolean isAccountNonLocked, boolean isCredentialsNonExpired, boolean isEnabled, Role role) {
@@ -89,5 +108,12 @@ public class User implements UserDetails {
         this.isAccountNonLocked = isAccountNonLocked;
         this.isCredentialsNonExpired = isCredentialsNonExpired;
         this.isEnabled = isEnabled;
+
+    }
+
+    public void setManufacturer(@Nullable Manufacturer manufacturer) {
+        assert manufacturer != null;
+        manufacturer.setId(this.id);
+        this.manufacturer = manufacturer;
     }
 }

@@ -3,6 +3,7 @@ package de.digitalstreich.Manufact.config;
 import de.digitalstreich.Manufact.service.AuthenticationUserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -35,15 +36,20 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/registration", "/css/**", "/js/**", "/img/**", "/").permitAll()
+                .antMatchers("/registration", "/css/**", "/js/**", "/img/**", "/", "/faker", "/faker-products").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
                 .formLogin()
-                    .loginPage("/login").permitAll()
+                    .loginPage("/").permitAll()
+                    .failureUrl("/")
+                    .loginProcessingUrl("/login")
                     .defaultSuccessUrl("/dashboard", true)
                     .passwordParameter("password")
                     .usernameParameter("email")
+                    .failureHandler((req,res,exp)->{  // Failure handler invoked after authentication failure
+                        res.sendError(404, "Email oder Passwort ist falsch.");
+                    })
                 .and()
                 .rememberMe()
                 .and()

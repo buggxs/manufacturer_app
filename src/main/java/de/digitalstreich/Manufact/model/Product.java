@@ -5,10 +5,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @Entity
 @Table(name = "products")
@@ -55,9 +60,6 @@ public class Product {
     @Column(name = "delivery_time")
     private String deliveryTime;
 
-    @Column(name = "unit_of_measure")
-    private String unitOfMeasure;
-
     @Column(name = "packaging_unit")
     private String packaging_unit;
 
@@ -68,6 +70,7 @@ public class Product {
     private String description;
 
 
+    @Nullable
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "product_category",
@@ -77,6 +80,7 @@ public class Product {
             inverseForeignKey = @ForeignKey(name = "fk_category_product"))
     private List<Category> categories;
 
+    @Nullable
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "product_tag",
@@ -88,19 +92,47 @@ public class Product {
     private List<Tag> tags;
 
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(
+            foreignKey = @ForeignKey(name = "fk_manufacturer_product"),
+            name = "product_manufacturer_id"
+    )
+    private Manufacturer manufacturer;
+
+    @Column(name = "created_at", columnDefinition = "DATETIME default CURRENT_TIMESTAMP")
     @CreationTimestamp
-    @Column(name = "created_at", nullable = false)
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
+    @Column(name = "updated_at", columnDefinition = "DATETIME default CURRENT_TIMESTAMP")
     @UpdateTimestamp
-    @Column(name = "updated_at")
-    private Date updatedAt;
+    private LocalDateTime  updatedAt;
 
 
+    public Product(String name, String productNumber, Double price, Double height, Double length, Double depth, Double volume, Double weight, String ean, String deliveryTime, String packaging_unit, Date publication_date, String description, Manufacturer manufacturer) {
+        this.name = name;
+        this.slug = createSlug(name);
+        this.productNumber = productNumber;
+        this.price = price;
+        this.height = height;
+        this.length = length;
+        this.depth = depth;
+        this.volume = volume;
+        this.weight = weight;
+        this.ean = ean;
+        this.deliveryTime = deliveryTime;
+        this.packaging_unit = packaging_unit;
+        this.publication_date = publication_date;
+        this.description = description;
+        this.manufacturer = manufacturer;
+    }
 
-
-
-
-
-
+    private String createSlug(String name) {
+        String slug = name.toLowerCase(Locale.GERMAN);
+        slug = slug
+                .replace("ä", "ae")
+                .replace("ö", "oe")
+                .replace("ü", "ue")
+                .replace(" ", "-");
+        return slug;
+    }
 }

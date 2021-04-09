@@ -16,7 +16,6 @@ import java.util.List;
 @Table(name = "manufacturers")
 @Getter
 @Setter
-@NoArgsConstructor
 public class Manufacturer {
 
     @Id
@@ -51,11 +50,11 @@ public class Manufacturer {
     private String phone;
 
     @CreationTimestamp
-    @Column(name = "created_at")
+    @Column(name = "created_at", columnDefinition = "DATETIME default CURRENT_TIMESTAMP")
     private Date createdAt;
 
     @UpdateTimestamp
-    @Column(name = "updated_at")
+    @Column(name = "updated_at", columnDefinition = "DATETIME default CURRENT_TIMESTAMP")
     private Date updatedAt;
 
     @OneToOne
@@ -90,11 +89,9 @@ public class Manufacturer {
     )
     private State state;
 
-    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL)
-    @JoinColumn(
-            foreignKey = @ForeignKey(name = "fk_manufacturer_product")
-    )
+    @OneToMany(mappedBy = "manufacturer")
     private List<Product> products;
+
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(
@@ -104,4 +101,23 @@ public class Manufacturer {
     )
     private ManufacturerDetails manufacturerDetails;
 
+    public Manufacturer() {
+
+    }
+
+    public Manufacturer(String company, String website, String ustid, String postcode, String city, String street, String contactEmail, Boolean active, String phone, User user, Branch branch, Country country, State state) {
+        this.company = company;
+        this.website = website;
+        this.ustid = ustid;
+        this.postcode = postcode;
+        this.city = city;
+        this.street = street;
+        this.contactEmail = contactEmail;
+        this.active = active;
+        this.phone = phone;
+        this.user = user;
+        this.branch = branch;
+        this.country = country;
+        this.state = state;
+    }
 }
