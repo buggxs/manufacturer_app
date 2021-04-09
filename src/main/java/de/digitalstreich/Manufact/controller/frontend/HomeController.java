@@ -1,13 +1,6 @@
 package de.digitalstreich.Manufact.controller.frontend;
 
-import de.digitalstreich.Manufact.db.ManufacturerRepository;
-import de.digitalstreich.Manufact.db.UserRepository;
-import de.digitalstreich.Manufact.factory.ProductFactory;
-import de.digitalstreich.Manufact.factory.UserFactory;
-import de.digitalstreich.Manufact.model.Manufacturer;
-import de.digitalstreich.Manufact.model.ManufacturerDetails;
-import de.digitalstreich.Manufact.model.Product;
-import de.digitalstreich.Manufact.model.auth.User;
+import de.digitalstreich.Manufact.factory.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,18 +10,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("")
 public class HomeController {
 
-    @Autowired
     private UserFactory userFactory;
-
-    @Autowired
     private ProductFactory productFactory;
+    private BranchFactory branchFactory;
+    private CategoryFactory categoryFactory;
+    private StateFactory stateFactory;
+    private CountryFactory countryFactory;
+    private TagFactory tagFactory;
+
 
     @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private ManufacturerRepository manufacturerRepository;
-
+    public HomeController(UserFactory userFactory, ProductFactory productFactory, BranchFactory branchFactory,
+                          CategoryFactory categoryFactory, StateFactory stateFactory, CountryFactory countryFactory, TagFactory tagFactory) {
+        this.userFactory = userFactory;
+        this.productFactory = productFactory;
+        this.branchFactory = branchFactory;
+        this.categoryFactory = categoryFactory;
+        this.stateFactory = stateFactory;
+        this.countryFactory = countryFactory;
+        this.tagFactory = tagFactory;
+    }
 
     @GetMapping(value = {"", "/"})
     public String index()
@@ -40,17 +41,6 @@ public class HomeController {
     public String faker() {
 
 
-        // userFactory.createManufacturer();
-        /*
-        Manufacturer manufacturer = userFactory.userWithManufacturer();
-        ManufacturerDetails manufacturerDetails = new ManufacturerDetails(
-                true,
-                true
-        );
-        manufacturer.setManufacturerDetails(manufacturerDetails);
-        manufacturerRepository.save(manufacturer);
-        */
-
         return "frontend/index/index";
     }
 
@@ -58,6 +48,21 @@ public class HomeController {
     public String fakerProducts(){
 
         productFactory.createProducts(1L);
+
+        return "frontend/index/index";
+    }
+
+    @GetMapping(value = {"/fake-data"})
+    public String fakerData(){
+
+//        countryFactory.createCountry();
+//        stateFactory.createStates();
+//        categoryFactory.createCategories();
+//        tagFactory.createTag();
+//        branchFactory.createBranches();
+//        userFactory.createManufacturer();
+//        productFactory.createProducts(1L);
+
 
         return "frontend/index/index";
     }
