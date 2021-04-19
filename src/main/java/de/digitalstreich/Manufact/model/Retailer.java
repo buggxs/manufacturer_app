@@ -6,6 +6,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "retailers")
@@ -23,6 +24,12 @@ public class Retailer {
     )
     private User user;
 
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "url", columnDefinition = "TEXT")
+    private String url;
+
     @CreatedDate
     @Column(name = "created_at", columnDefinition = "DATETIME default CURRENT_TIMESTAMP")
     private Date createdAt;
@@ -30,5 +37,8 @@ public class Retailer {
     @LastModifiedDate
     @Column(name = "updated_at", columnDefinition = "DATETIME default CURRENT_TIMESTAMP")
     private Date updatedAt;
+
+    @ManyToMany(mappedBy = "retailerList")
+    private List<Productgroup> productgroupList;
 
 }

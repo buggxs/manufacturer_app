@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.Arrays;
 import java.util.Locale;
 
 @Service
@@ -17,27 +18,20 @@ public class BranchFactory {
     @Autowired
     private BranchRepository branchRepository;
 
-    private Faker faker;
-
-    @PostConstruct
-    private void fill() {
-        this.faker =   generateFaker();
-    }
-
-    private Faker generateFaker() {
-        return new Faker(new Locale("de-DE"));
-    }
+    String[] branches = {
+            "Agrarwirtschaft", "Bau", "Chemie & Rohstoffe",
+            "Dienstleistungen & Handwerk", "E-Commerce", "Energie & Umwelt",
+            "Finanzen, Versicherungen & Immobilien", "Freizeit", "Gesellschaft",
+            "Handel", "Internet", "Konsum  FMCG", "Leben", "Medien",
+            "Metall & Elektronik", "Pharma & Gesundheit", "Sport & Fitness",
+            "Technik & Telekommunikation", "Tourismus & Gastronomie", "Verkehr & Logistik",
+            "Werbung & Marketing"
+    };
 
     public void createBranches() {
-        for (int i = 0; i < 40; i++) {
-
-            branchRepository.save(
-                    new Branch(
-                            faker.lorem().word()
-                    )
-            );
-
-        }
+        Arrays.stream(branches)
+                .map(Branch::new)
+                .forEach(branchRepository::save);
     }
 
 }

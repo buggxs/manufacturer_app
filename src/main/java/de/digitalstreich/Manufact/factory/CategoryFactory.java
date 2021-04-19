@@ -1,16 +1,10 @@
 package de.digitalstreich.Manufact.factory;
 
-import com.github.javafaker.Faker;
 import de.digitalstreich.Manufact.db.*;
 import de.digitalstreich.Manufact.model.*;
-import de.digitalstreich.Manufact.model.auth.Role;
-import de.digitalstreich.Manufact.model.auth.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.PostConstruct;
-import java.util.Locale;
+import java.util.Arrays;
 
 @Service
 public class CategoryFactory {
@@ -18,27 +12,17 @@ public class CategoryFactory {
     @Autowired
     private CategoryRepository categoryRepository;
 
-    private Faker faker;
-
-    @PostConstruct
-    private void fill() {
-        this.faker =   generateFaker();
-    }
-
-    private Faker generateFaker() {
-        return new Faker(new Locale("de-DE"));
-    }
+    private String[] categories = {
+            "Bücher", "Elektronik & Computer", "Filme, Serien, Musik & Games",
+            "Haushalt, Garten, Tier & Baumarkt", "Beauty, Drogerie & Lebensmittel",
+            "Spielzeug & Baby", "Bekleidung, Schuhe , Schmuck und Accessoires",
+            "Sport & Freizeit", "Auto, Motorrad & Gewerbe"
+    };
 
     public void createCategories() {
-        for (int i = 0; i < 40; i++) {
-
-            categoryRepository.save(
-                    new Category(
-                            faker.lorem().word()
-                    )
-            );
-
-        }
+        Arrays.stream(categories)
+                .map(Category::new)
+                .forEach(categoryRepository::save);
     }
 
 

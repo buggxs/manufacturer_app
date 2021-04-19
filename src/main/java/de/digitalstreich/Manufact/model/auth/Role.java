@@ -38,7 +38,7 @@ public class Role {
             fetch = FetchType.EAGER
     )
     @JoinTable(
-            name = "role_permission",
+            name = "roles_permissions",
             joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "permission_id"),
             foreignKey = @ForeignKey(name = "fk_role_permission")

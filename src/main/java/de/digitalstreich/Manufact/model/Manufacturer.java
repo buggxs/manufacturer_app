@@ -92,6 +92,9 @@ public class Manufacturer {
     @OneToMany(mappedBy = "manufacturer")
     private List<Product> products;
 
+    @OneToMany(mappedBy = "manufacturer")
+    private List<Productgroup> productgroups;
+
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(

@@ -64,7 +64,7 @@ public class Product {
     private String packaging_unit;
 
     @Column(name = "publication_date")
-    private Date publication_date;
+    private Date publicationDate;
 
     @Column(name = "description", columnDefinition = "text")
     private String description;
@@ -73,7 +73,7 @@ public class Product {
     @Nullable
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-            name = "product_category",
+            name = "products_categories",
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"),
             foreignKey = @ForeignKey(name = "fk_product_category"),
@@ -83,7 +83,7 @@ public class Product {
     @Nullable
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-            name = "product_tag",
+            name = "products_tags",
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id"),
             foreignKey = @ForeignKey(name = "fk_product_tag"),
@@ -108,7 +108,7 @@ public class Product {
     private LocalDateTime  updatedAt;
 
 
-    public Product(String name, String productNumber, Double price, Double height, Double length, Double depth, Double volume, Double weight, String ean, String deliveryTime, String packaging_unit, Date publication_date, String description, Manufacturer manufacturer) {
+    public Product(String name, String productNumber, Double price, Double height, Double length, Double depth, Double volume, Double weight, String ean, String deliveryTime, String packaging_unit, Date publicationDate, String description, Manufacturer manufacturer) {
         this.name = name;
         this.slug = createSlug(name);
         this.productNumber = productNumber;
@@ -121,7 +121,7 @@ public class Product {
         this.ean = ean;
         this.deliveryTime = deliveryTime;
         this.packaging_unit = packaging_unit;
-        this.publication_date = publication_date;
+        this.publicationDate = publicationDate;
         this.description = description;
         this.manufacturer = manufacturer;
     }

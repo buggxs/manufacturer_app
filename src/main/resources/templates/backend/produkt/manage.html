@@ -16,10 +16,9 @@
     <div class="container-fluid mt-5">
 
         <div class="row mb-3">
-            <div class="col-12 d-flex d-inline-flex">
+            <div class="col-12 ">
                 <h1 class="h1 h1-responsive">
                     <span class="align-middle">Verwalte deine Produkte</span>
-                    <a href="" class="btn btn-floating btn-primary" data-toggle="tooltip" title="Neues Produkt erstellen" ><i class="fas fa-plus"></i></a>
                 </h1>
             </div>
         </div>
@@ -28,8 +27,12 @@
         <div class="row mb-5">
             <div class="col-12">
                 <div class="row">
-                    <div class="col-12">
-                        <h3 class="h3">Alle Produkte</h3>
+                    <div class="col-12 d-flex d-inline-flex">
+                        <h3 class="h3">
+                            <span class="align-middle">Alle Produkte</span>
+                            <a href="" class="btn btn-floating btn-primary" data-toggle="tooltip" title="Neues Produkt erstellen" ><i class="fas fa-plus"></i></a>
+                            <a href="" class="btn btn-floating btn-success ml-1" data-toggle="tooltip" title="Produktliste hochladen" ><i class="fas fa-upload"></i></a>
+                        </h3>
                     </div>
                 </div>
 
@@ -39,42 +42,23 @@
                         <table id="productTable">
                             <thead>
                             <tr>
-                                <th>Row 1</th>
-                                <th>Row 2</th>
-                                <th>Row 3</th>
-                                <th>Row 4</th>
+                                <th>Name</th>
+                                <th>Produktnummer</th>
+                                <th>Preis</th>
+                                <th>Erscheinungsdatum</th>
                                 <th style="width: 80px;">Aktion</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Data 1</td>
-                                <td>Data 2</td>
-                                <td>Data 3</td>
-                                <td>Data 4</td>
+                            <tr th:each="product : ${products}">
+                                <td>[[ ${product.getName()} ]]</td>
+                                <td>[[ ${product.getProductNumber()} ]]</td>
+                                <td>[[ ${product.getPrice()} ]]</td>
+                                <td>[[ ${product.getPublicationDate()} ]]</td>
                                 <td>
                                     <a href="" class="badge badge-primary" data-toggle="tooltip" title="Produkt bearbeiten"><i class="fas fa-pencil-alt" style="font-size: 1.0rem;"></i></a>
-                                    <a href="#" class="badge badge-danger ml-2" data-toggle="tooltip" title="Produkt löschen"><i class="fas fa-times" style="font-size: 1.0rem;"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Data 1</td>
-                                <td>Data 2</td>
-                                <td>Data 3</td>
-                                <td>Data 4</td>
-                                <td>
-                                    <a href="" class="badge badge-primary" data-toggle="tooltip" title="Produkt bearbeiten"><i class="fas fa-pencil-alt" style="font-size: 1.0rem;"></i></a>
-                                    <a href="#" class="badge badge-danger ml-2" data-toggle="tooltip" title="Produkt löschen"><i class="fas fa-times" style="font-size: 1.0rem;"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Data 1</td>
-                                <td>Data 2</td>
-                                <td>Data 3</td>
-                                <td>Data 4</td>
-                                <td>
-                                    <a href="" class="badge badge-primary" data-toggle="tooltip" title="Produkt bearbeiten"><i class="fas fa-pencil-alt" style="font-size: 1.0rem;"></i></a>
-                                    <a href="#" class="badge badge-danger ml-2" data-toggle="tooltip" title="Produkt löschen"><i class="fas fa-times" style="font-size: 1.0rem;"></i></a>
+                                    <a href="#" class="badge badge-danger ml-2" data-toggle="tooltip" title="Produkt löschen"><i class="fas fa-trash-alt" style="font-size: 1.0rem;"></i></a>
+                                    <a href="#" class="badge badge-success ml-2" data-toggle="tooltip" title="Produkt kopieren"><i class="fas fa-copy" style="font-size: 1.0rem;"></i></a>
                                 </td>
                             </tr>
                             </tbody>
@@ -88,9 +72,10 @@
         <div class="row mb-5">
             <div class="col-12">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 d-flex d-inline-flex">
                         <h3 class="h3 h3-responsive">
-                            Produktgrupppen zum Freigeben
+                            <span class="align-middle">Produktgrupppen zum Freigeben</span>
+                            <a href="" class="btn btn-floating btn-primary" data-toggle="tooltip" title="Neues Produkt erstellen" ><i class="fas fa-plus"></i></a>
                         </h3>
                     </div>
                 </div>
@@ -101,42 +86,23 @@
                         <table id="productGroupTable">
                             <thead>
                             <tr>
-                                <th>Row 1</th>
-                                <th>Row 2</th>
-                                <th>Row 3</th>
-                                <th>Row 4</th>
+                                <th>Name</th>
+                                <th>Anzahl an Produkten</th>
+                                <th>Händlerfreigabe erteilt</th>
+                                <th>Freigabe für Händler</th>
                                 <th style="width: 80px;">Aktion</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>Data 1</td>
-                                <td>Data 2</td>
-                                <td>Data 3</td>
-                                <td>Data 4</td>
+                            <tr th:each="productgroup : ${productgroups}">
+                                <td>[[${productgroup.name}]]</td>
+                                <td>[[${#lists.size(productgroup.products)}]]</td>
+                                <td>[[${productgroup.released}]]</td>
+                                <td><span th:text="${productgroup.retailerList}? 'Noch nicht zugewiesen.':${productgroup.retailerList[0].name}"></span></td>
                                 <td>
                                     <a href="" class="badge badge-primary" data-toggle="tooltip" title="Produkt bearbeiten"><i class="fas fa-pencil-alt" style="font-size: 1.0rem;"></i></a>
-                                    <a href="#" class="badge badge-danger ml-2" data-toggle="tooltip" title="Produkt löschen"><i class="fas fa-times" style="font-size: 1.0rem;"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Data 1</td>
-                                <td>Data 2</td>
-                                <td>Data 3</td>
-                                <td>Data 4</td>
-                                <td>
-                                    <a href="" class="badge badge-primary" data-toggle="tooltip" title="Produkt bearbeiten"><i class="fas fa-pencil-alt" style="font-size: 1.0rem;"></i></a>
-                                    <a href="#" class="badge badge-danger ml-2" data-toggle="tooltip" title="Produkt löschen"><i class="fas fa-times" style="font-size: 1.0rem;"></i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Data 1</td>
-                                <td>Data 2</td>
-                                <td>Data 3</td>
-                                <td>Data 4</td>
-                                <td>
-                                    <a href="" class="badge badge-primary" data-toggle="tooltip" title="Produkt bearbeiten"><i class="fas fa-pencil-alt" style="font-size: 1.0rem;"></i></a>
-                                    <a href="#" class="badge badge-danger ml-2" data-toggle="tooltip" title="Produkt löschen"><i class="fas fa-times" style="font-size: 1.0rem;"></i></a>
+                                    <a href="#" class="badge badge-danger ml-2" data-toggle="tooltip" title="Produkt löschen"><i class="fas fa-trash-alt" style="font-size: 1.0rem;"></i></a>
+                                    <a href="#" class="badge badge-success ml-2" data-toggle="tooltip" title="Produkt kopieren"><i class="fas fa-copy" style="font-size: 1.0rem;"></i></a>
                                 </td>
                             </tr>
                             </tbody>
