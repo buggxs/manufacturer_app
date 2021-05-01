@@ -30,7 +30,7 @@ public class ProductController {
     @GetMapping("/product")
     public String index()
     {
-        return "backend/produkt/index";
+        return "backend/product/index";
     }
 
     @GetMapping("/product/manage")
@@ -46,7 +46,7 @@ public class ProductController {
         model.addAttribute("productgroups", productgroups);
         model.addAttribute("products", products);
 
-        return "backend/produkt/manage";
+        return "backend/product/manage";
     }
 
     @GetMapping("/product/create")
