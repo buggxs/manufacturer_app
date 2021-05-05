@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"  lang="de">
     <header th:fragment="menu">
-        <div id="slide-out" class="side-nav fixed wide sn-bg-1">
+        <div id="slide-out" class="side-nav fixed wide sn-bg-1" >
             <ul class="custom-scrollbar">
                 <!-- Logo -->
                 <li>
@@ -11,7 +11,7 @@
                 </li>
                 <!--/. Logo -->
                 <!-- Side navigation links -->
-                <li>
+                <li >
                     <ul class="collapsible collapsible-accordion">
                         <li>
                             <a class="collapsible-header waves-effect arrow-r active">
@@ -25,12 +25,12 @@
                             <div class="collapsible-body">
                                 <ul>
                                     <li>
-                                        <a href="#" class="waves-effect">
+                                        <a th:href="@{/retailer}" class="waves-effect">
                                             <span class="sv-slim"> HÄ </span>
                                             <span class="sv-normal">Händler</span>
                                         </a>
                                     </li>
-                                    <li><a href="#" class="waves-effect">
+                                    <li><a th:href="@{/manufacturer}" class="waves-effect">
                                         <span class="sv-slim"> HE </span>
                                         <span class="sv-normal">Hersteller</span></a>
                                     </li>

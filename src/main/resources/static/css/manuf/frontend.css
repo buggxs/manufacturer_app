@@ -55,3 +55,7 @@ header,
         margin-left: 1rem;
     }
 }
+
+.manuf-search-container {
+    height: 90vh;
+}
