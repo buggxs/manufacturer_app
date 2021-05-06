@@ -21,9 +21,12 @@ class ProductServiceImplTest {
 
         ProductService productService = new ProductServiceImpl(productRepository);
 
-        Manufacturer manufacturer = new Manufacturer(111L, "Käse Gmbh", "",
+        Manufacturer manufacturer = new Manufacturer(
+                111L, "Käse Gmbh", "",
                 "", "", "", "",
-                "",true, "", null, null, null, null);
+                "",true, "", null,
+                null, null, null
+        );
         Product product = new Product(123L, "Rockstar", "11223344", 1.89, manufacturer);
         Product product2 = new Product(124L, "Monster", "11223355", 1.89, manufacturer);
         List<Product> products = Collections.singletonList(product);
