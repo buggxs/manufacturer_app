@@ -1,6 +1,7 @@
 package de.digitalstreich.Manufact.model;
 
 import de.digitalstreich.Manufact.model.auth.User;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,6 +17,8 @@ import java.util.List;
 @Table(name = "manufacturers")
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Manufacturer {
 
     @Id
@@ -104,8 +107,22 @@ public class Manufacturer {
     )
     private ManufacturerDetails manufacturerDetails;
 
-    public Manufacturer() {
 
+    public Manufacturer(Long id, String company, String website, String ustid, String postcode, String city, String street, String contactEmail, Boolean active, String phone, User user, Branch branch, Country country, State state) {
+        this.id = id;
+        this.company = company;
+        this.website = website;
+        this.ustid = ustid;
+        this.postcode = postcode;
+        this.city = city;
+        this.street = street;
+        this.contactEmail = contactEmail;
+        this.active = active;
+        this.phone = phone;
+        this.user = user;
+        this.branch = branch;
+        this.country = country;
+        this.state = state;
     }
 
     public Manufacturer(String company, String website, String ustid, String postcode, String city, String street, String contactEmail, Boolean active, String phone, User user, Branch branch, Country country, State state) {

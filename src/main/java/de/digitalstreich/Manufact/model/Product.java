@@ -1,5 +1,6 @@
 package de.digitalstreich.Manufact.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,12 +21,13 @@ import java.util.Locale;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private Long id;
 
     @Column(name = "name", columnDefinition = "text", nullable = false)
     private String name;
@@ -106,6 +108,15 @@ public class Product {
     @Column(name = "updated_at", columnDefinition = "DATETIME default CURRENT_TIMESTAMP")
     @UpdateTimestamp
     private LocalDateTime  updatedAt;
+
+    public Product(Long id, String name, String productNumber, Double price, Manufacturer manufacturer)
+    {
+        this.id = id;
+        this.name = name;
+        this.productNumber = productNumber;
+        this.price = price;
+        this.manufacturer = manufacturer;
+    }
 
 
     public Product(String name, String productNumber, Double price, Double height, Double length, Double depth, Double volume, Double weight, String ean, String deliveryTime, String packaging_unit, Date publicationDate, String description, Manufacturer manufacturer) {
