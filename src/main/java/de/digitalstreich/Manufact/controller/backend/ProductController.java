@@ -5,13 +5,13 @@ import de.digitalstreich.Manufact.model.Product;
 import de.digitalstreich.Manufact.model.Productgroup;
 import de.digitalstreich.Manufact.model.auth.User;
 import de.digitalstreich.Manufact.service.interfaces.ProductService;
+import de.digitalstreich.Manufact.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,12 +19,12 @@ import java.util.Optional;
 public class ProductController {
 
     private ProductService productService;
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Autowired
-    public ProductController(ProductService productService, UserRepository userRepository) {
+    public ProductController(ProductService productService, UserService userService) {
         this.productService = productService;
-        this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     @GetMapping("/product")
@@ -34,11 +34,9 @@ public class ProductController {
     }
 
     @GetMapping("/product/manage")
-    public String manage(Model model, Principal principal)
+    public String manage(Model model)
     {
-        System.out.println(principal.getName());
-        Optional<User> userOptional = userRepository.findByEmail(principal.getName());
-        User currentUser = userOptional.get();
+        User currentUser = userService.currentLoggedInUser();
 
         List<Product> products = currentUser.getManufacturer().getProducts();
         List<Productgroup> productgroups = currentUser.getManufacturer().getProductgroups();
