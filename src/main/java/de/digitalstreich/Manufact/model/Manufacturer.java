@@ -11,6 +11,7 @@ import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -139,5 +140,9 @@ public class Manufacturer {
         this.branch = branch;
         this.country = country;
         this.state = state;
+    }
+
+    public List<Product> getProducts() {
+        return products == null ? new ArrayList<>():products;
     }
 }
