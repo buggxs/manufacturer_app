@@ -13,12 +13,12 @@ import java.util.*;
 
 class ProductServiceImplTest {
 
-    private ProductRepository productRepository = Mockito.mock(ProductRepository.class);
+    private final ProductRepository productRepository = Mockito.mock(ProductRepository.class);
 
     @Test
     @DisplayName("find all manufacturer products")
-    void test_findAllManufacturerProducts() {
-
+    void test_findAllManufacturerProducts()
+    {
         ProductService productService = new ProductServiceImpl(productRepository);
 
         Manufacturer manufacturer = new Manufacturer(
@@ -37,9 +37,7 @@ class ProductServiceImplTest {
 
         Assertions.assertThat(foundProducts).contains(product);
         Assertions.assertThat(foundProducts).doesNotContainSequence(product2);
-
-
-
-
     }
+
+
 }
